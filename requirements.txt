@@ -1,0 +1,9 @@
+streamlit==1.43.0
+transformers==4.49.0
+pillow==10.4.0
+protobuf==4.25.5
+Jinja2==3.1.4
+torch==2.5.1 
+boto3==1.37.4
+torchvision== 0.20.1
+fastapi==0.115.11
