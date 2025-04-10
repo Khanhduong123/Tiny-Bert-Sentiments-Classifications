@@ -7,3 +7,5 @@ torch==2.5.1
 boto3==1.37.4
 torchvision== 0.20.1
 fastapi==0.115.11
+python-dotenv==1.1.0
+uvicorn==0.34.0
