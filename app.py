@@ -8,7 +8,7 @@ import subprocess
 import atexit
 
 
-url = "http://localhost:7860/api/v1/predict/"
+url = "http://13.229.206.194:8502/api/v1/predict/"
 headers = {
   'Content-Type': 'application/json'
 }
@@ -24,3 +24,5 @@ if st.button("Predict"):
         response =requests.post(url, headers=headers, json=data)
         output = response.json()
     st.write(output['label'])
+
+#python -m streamlit run streamlit_app.py --server.enableXsrProtection false
