@@ -1,0 +1,13 @@
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - "80:8000"
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=${GPU_OPTION:-none}
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [cpu,gpu]
