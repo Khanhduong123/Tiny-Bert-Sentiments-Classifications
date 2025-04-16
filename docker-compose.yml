@@ -4,6 +4,8 @@ services:
       context: .
     ports:
       - "8000"
+    volumes:
+      - ./.aws:/root/.aws:ro # Mount thư mục .aws từ máy chủ vào container, với quyền chỉ đọc (ro)
     environment:
       - NVIDIA_VISIBLE_DEVICES=${GPU_OPTION:-none}
     deploy:
@@ -11,3 +13,11 @@ services:
         reservations:
           devices:
             - capabilities: [gpu]
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80" # Mở cổng 80 trên máy chủ và chuyển tiếp sang cổng 80 của container
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro # Mount file nginx.conf từ máy chủ vào container, với quyền chỉ đọc (ro)
+    depends_on:
+      - app
