@@ -1,5 +1,5 @@
-FROM nvidia/cuda:12.1.0-cudnn8-runtime-ubuntu22.04
-
+# FROM nvidia/cuda:12.1.0-cudnn8-runtime-ubuntu22.04
+FROM python:3.10.17-slim
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Ho_Chi_Minh
 # Install dependencies
@@ -20,17 +20,16 @@ RUN apt-get update && apt-get install -y \
     libxmlsec1-dev \
     libffi-dev \
     liblzma-dev \
-    ca-certificates \
-    git
+    ca-certificates
 
-# Install Python 3.10
-RUN add-apt-repository ppa:deadsnakes/ppa && \
-    apt-get update && \
-    apt-get install -y python3.10 python3.10-venv python3.10-dev python3.10-distutils
+# # Install Python 3.10
+# RUN add-apt-repository ppa:deadsnakes/ppa && \
+#     apt-get update && \
+#     apt-get install -y python3.10 python3.10-venv python3.10-dev python3.10-distutils
 
-# Set Python 3.10 as default
-RUN ln -sf /usr/bin/python3.10 /usr/bin/python && \
-    curl -sS https://bootstrap.pypa.io/get-pip.py | python
+# # Set Python 3.10 as default
+# RUN ln -sf /usr/bin/python3.10 /usr/bin/python && \
+#     curl -sS https://bootstrap.pypa.io/get-pip.py | python
 
 # Set working directory
 WORKDIR /app

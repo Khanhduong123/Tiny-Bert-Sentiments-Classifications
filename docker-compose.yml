@@ -3,7 +3,7 @@ services:
     build:
       context: .
     ports:
-      - "8000"
+      - ":8000"
     volumes:
       - ./.aws:/root/.aws:ro # Mount thư mục .aws từ máy chủ vào container, với quyền chỉ đọc (ro)
     environment:
@@ -14,10 +14,14 @@ services:
           devices:
             - capabilities: [gpu]
   nginx:
-    image: nginx:latest
-    ports:
-      - "80:80" # Mở cổng 80 trên máy chủ và chuyển tiếp sang cổng 80 của container
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro # Mount file nginx.conf từ máy chủ vào container, với quyền chỉ đọc (ro)
+    # image: nginx:latest
+     # Mở cổng 80 trên máy chủ và chuyển tiếp sang cổng 80 của container
+    # volumes:
+    #   - ./nginx.conf:/etc/nginx/nginx.conf:ro # Mount file nginx.conf từ máy chủ vào container, với quyền chỉ đọc (ro)
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx # Sử dụng Dockerfile.nginx để xây dựng image
     depends_on:
       - app
+    ports:
+      - "80:80"

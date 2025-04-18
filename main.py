@@ -12,6 +12,6 @@ app.include_router(api_v1_router, prefix="/api")
 
 # Launch FastAPI app
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=os.environ.get("PORT", 8502))
+    uvicorn.run(app, host="0.0.0.0", port=os.environ.get("PORT", 8000))
     
 # uvicorn main:app --host 0.0.0.0 --port 8502 --reload
